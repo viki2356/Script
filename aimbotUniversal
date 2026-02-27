@@ -1,0 +1,531 @@
+pcall(function() game:GetService("CoreGui"):FindFirstChild("AimbotUniversal"):Destroy() end)
+
+local P=game:GetService("Players").LocalPlayer
+local TS=game:GetService("TweenService")
+local UIS=game:GetService("UserInputService")
+local RS=game:GetService("RunService")
+local Cam=workspace.CurrentCamera
+
+local AB={on=false,team=true,wall=true,fov=200,smooth=0.3,part="Head",conn=nil}
+local ESP={on=false,team=true,conn=nil,d={}}
+
+local function enemy(p)
+    if p==P or not p.Character then return false end
+    local h=p.Character:FindFirstChildWhichIsA("Humanoid")
+    if not h or h.Health<=0 then return false end
+    if AB.team and P.Team~=nil and p.Team==P.Team then return false end
+    return true
+end
+
+local function hasLOS(pt)
+    local ray=workspace:Raycast(Cam.CFrame.Position,(pt.Position-Cam.CFrame.Position).Unit*600,RaycastParams.new())
+    if not ray then return false end
+    return ray.Instance and ray.Instance:IsDescendantOf(pt.Parent)
+end
+
+local function startAB()
+    if AB.conn then AB.conn:Disconnect() end
+    AB.conn=RS.RenderStepped:Connect(function()
+        if not AB.on then return end
+        local best,bd=nil,AB.fov
+        local cx,cy=Cam.ViewportSize.X/2,Cam.ViewportSize.Y/2
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if enemy(p) then
+                local pt=p.Character:FindFirstChild(AB.part) or p.Character:FindFirstChild("HumanoidRootPart")
+                if pt then
+                    local s,v=Cam:WorldToViewportPoint(pt.Position)
+                    if v and s.Z>0 and (not AB.wall or hasLOS(pt)) then
+                        local d=math.sqrt((s.X-cx)^2+(s.Y-cy)^2)
+                        if d<bd then bd=d;best=p end
+                    end
+                end
+            end
+        end
+        if best and best.Character then
+            local pt=best.Character:FindFirstChild(AB.part) or best.Character:FindFirstChild("HumanoidRootPart")
+            if pt then Cam.CFrame=Cam.CFrame:Lerp(CFrame.new(Cam.CFrame.Position,pt.Position),AB.smooth) end
+        end
+    end)
+end
+
+local function clearESP()
+    for _,t in pairs(ESP.d) do for _,v in pairs(t) do pcall(function()v:Remove()end) end end
+    ESP.d={}
+end
+
+local function buildESP()
+    clearESP();if not ESP.on then return end
+    for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+        if p~=P and p.Character then
+            local isT=P.Team~=nil and p.Team==P.Team
+            local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+            local t={}
+            local n=Drawing.new("Text");n.Size=13;n.Color=col;n.Outline=true;n.Center=true;n.Visible=false;table.insert(t,n)
+            local hp=Drawing.new("Text");hp.Size=11;hp.Color=Color3.fromRGB(100,255,100);hp.Outline=true;hp.Center=true;hp.Visible=false;table.insert(t,hp)
+            for i=1,4 do local l=Drawing.new("Line");l.Color=col;l.Thickness=1.5;l.Visible=false;table.insert(t,l) end
+            ESP.d[p.Name]=t
+        end
+    end
+end
+
+local function runESP()
+    if ESP.conn then ESP.conn:Disconnect() end
+    ESP.conn=RS.RenderStepped:Connect(function()
+        if not ESP.on then clearESP();return end
+        -- Auto add new players
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if p~=P and p.Character and not ESP.d[p.Name] then
+                local isT=P.Team~=nil and p.Team==P.Team
+                local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+                local t={}
+                local n=Drawing.new("Text");n.Size=13;n.Color=col;n.Outline=true;n.Center=true;n.Visible=false;table.insert(t,n)
+                local hp=Drawing.new("Text");hp.Size=11;hp.Color=Color3.fromRGB(100,255,100);hp.Outline=true;hp.Center=true;hp.Visible=false;table.insert(t,hp)
+                for i=1,4 do local l=Drawing.new("Line");l.Color=col;l.Thickness=1.5;l.Visible=false;table.insert(t,l) end
+                ESP.d[p.Name]=t
+            end
+        end
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if p~=P and p.Character then
+                local hrp=p.Character:FindFirstChild("HumanoidRootPart")
+                local hum=p.Character:FindFirstChildWhichIsA("Humanoid")
+                local head=p.Character:FindFirstChild("Head")
+                local t=ESP.d[p.Name]
+                if not(hrp and hum and head and t) then continue end
+                local hs,hv=Cam:WorldToViewportPoint(head.Position+Vector3.new(0,0.6,0))
+                local fs=Cam:WorldToViewportPoint(hrp.Position-Vector3.new(0,3,0))
+                if not hv then for _,d in pairs(t) do pcall(function()d.Visible=false end) end;continue end
+                local isT=P.Team~=nil and p.Team==P.Team
+                local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+                local bh=math.abs(hs.Y-fs.Y);local bw=bh*0.55;local bx=hs.X-bw/2;local by=hs.Y
+                t[1].Position=Vector2.new(hs.X,by-16);t[1].Text=p.Name;t[1].Color=col;t[1].Visible=true
+                t[2].Position=Vector2.new(hs.X,by-4);t[2].Text="HP:"..math.floor(hum.Health);t[2].Visible=true
+                local ln={{Vector2.new(bx,by),Vector2.new(bx+bw,by)},{Vector2.new(bx,by+bh),Vector2.new(bx+bw,by+bh)},{Vector2.new(bx,by),Vector2.new(bx,by+bh)},{Vector2.new(bx+bw,by),Vector2.new(bx+bw,by+bh)}}
+                for i,v in ipairs(ln) do t[i+2].From=v[1];t[i+2].To=v[2];t[i+2].Color=col;t[i+2].Visible=true end
+            end
+        end
+    end)
+end
+
+-- GUI BUILD
+local SG=Instance.new("ScreenGui");SG.Name="AimbotUniversal";SG.ResetOnSpawn=false;SG.DisplayOrder=999
+pcall(function()SG.Parent=game:GetService("CoreGui")end)
+if SG.Parent~=game:GetService("CoreGui") then SG.Parent=P.PlayerGui end
+
+local W=Color3.fromRGB(230,230,240);local BG=Color3.fromRGB(18,18,28);local S2=Color3.fromRGB(25,25,38)
+local TB=Color3.fromRGB(30,30,45);local AC=Color3.fromRGB(100,180,255);local ST=Color3.fromRGB(140,140,160)
+local F=Enum.Font.GothamBold
+
+local function cr(cls,props) local o=Instance.new(cls);for k,v in pairs(props) do o[k]=v end;return o end
+local function corner(p,r) cr("UICorner",{CornerRadius=UDim.new(0,r or 8),Parent=p}) end
+
+local Main=cr("Frame",{Size=UDim2.new(0,480,0,350),Position=UDim2.new(0.5,-240,0.5,-175),BackgroundColor3=BG,BorderSizePixel=0,ClipsDescendants=false,Parent=SG});corner(Main,10)
+local Top=cr("Frame",{Size=UDim2.new(1,0,0,42),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=2,Parent=Main});corner(Top,10)
+cr("Frame",{Size=UDim2.new(1,0,0,10),Position=UDim2.new(0,0,1,-10),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=2,Parent=Top})
+local ac=cr("Frame",{Size=UDim2.new(0,3,0,20),Position=UDim2.new(0,12,0.5,-10),BackgroundColor3=AC,BorderSizePixel=0,ZIndex=3,Parent=Top});corner(ac,99)
+cr("TextLabel",{Size=UDim2.new(0,200,1,0),Position=UDim2.new(0,22,0,0),BackgroundTransparency=1,Text="Aimbot Universal",TextColor3=W,TextSize=14,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=3,Parent=Top})
+
+local function topBtn(x,bg,lbl)
+    local b=cr("TextButton",{Size=UDim2.new(0,25,0,25),Position=UDim2.new(1,x,0.5,-12),BackgroundColor3=bg,Text=lbl,TextColor3=Color3.fromRGB(255,255,255),TextSize=11,Font=F,BorderSizePixel=0,ZIndex=4,Parent=Top});corner(b,6);return b
+end
+topBtn(-32,Color3.fromRGB(255,70,70),"X").MouseButton1Click:Connect(function()
+    if AB.conn then AB.conn:Disconnect() end;if ESP.conn then ESP.conn:Disconnect() end;clearESP();SG:Destroy()
+end)
+local mini=false
+local MinBtnRef=topBtn(-62,Color3.fromRGB(255,180,40),"-")
+
+local drag,dp,fp=false,nil,nil
+Top.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then drag=true;dp=i.Position;fp=Main.Position end end)
+Top.InputEnded:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then drag=false end end)
+UIS.InputChanged:Connect(function(i) if drag and(i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then local d=i.Position-dp;Main.Position=UDim2.new(fp.X.Scale,fp.X.Offset+d.X,fp.Y.Scale,fp.Y.Offset+d.Y) end end)
+
+local Side=cr("Frame",{Size=UDim2.new(0,108,1,-50),Position=UDim2.new(0,6,0,46),BackgroundColor3=TB,BorderSizePixel=0,ZIndex=2,Parent=Main});corner(Side,9)
+cr("UIListLayout",{Padding=UDim.new(0,4),SortOrder=Enum.SortOrder.LayoutOrder,Parent=Side})
+cr("UIPadding",{PaddingTop=UDim.new(0,7),PaddingLeft=UDim.new(0,6),PaddingRight=UDim.new(0,6),Parent=Side})
+local CH=cr("Frame",{Size=UDim2.new(1,-122,1,-50),Position=UDim2.new(0,120,0,46),BackgroundTransparency=1,ClipsDescendants=false,ZIndex=2,Parent=Main})
+
+-- Hook minimize AFTER Side and CH exist
+MinBtnRef.MouseButton1Click:Connect(function()
+    mini=not mini
+    Side.Visible=not mini
+    CH.Visible=not mini
+    TS:Create(Main,TweenInfo.new(0.2),{Size=mini and UDim2.new(0,480,0,42) or UDim2.new(0,480,0,350)}):Play()
+end)
+
+local curB,curS=nil,nil
+local function mkTab(name)
+    local B=cr("TextButton",{Size=UDim2.new(1,0,0,30),BackgroundColor3=TB,Text="",BorderSizePixel=0,ZIndex=3,Parent=Side});corner(B,7)
+    local BL=cr("TextLabel",{Size=UDim2.new(1,-8,1,0),Position=UDim2.new(0,8,0,0),BackgroundTransparency=1,Text=name,TextColor3=ST,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=B})
+    local bar=cr("Frame",{Size=UDim2.new(0,3,0,14),Position=UDim2.new(0,1,0.5,-7),BackgroundColor3=AC,BackgroundTransparency=1,BorderSizePixel=0,ZIndex=5,Parent=B});corner(bar,99)
+    local SC=cr("ScrollingFrame",{Size=UDim2.new(1,-4,1,-4),Position=UDim2.new(0,2,0,2),BackgroundTransparency=1,ScrollBarThickness=3,ScrollBarImageColor3=AC,CanvasSize=UDim2.new(0,0,0,0),AutomaticCanvasSize=Enum.AutomaticSize.Y,Visible=false,ZIndex=3,Parent=CH})
+    cr("UIListLayout",{Padding=UDim.new(0,6),SortOrder=Enum.SortOrder.LayoutOrder,Parent=SC});cr("UIPadding",{PaddingTop=UDim.new(0,4),PaddingRight=UDim.new(0,4),Parent=SC})
+    local function act()
+        if curB then TS:Create(curB,TweenInfo.new(0.12),{BackgroundColor3=TB}):Play()
+            for _,v in pairs(curB:GetChildren()) do if v:IsA("TextLabel") then v.TextColor3=ST end;if v:IsA("Frame") then v.BackgroundTransparency=1 end end end
+        if curS then curS.Visible=false end
+        TS:Create(B,TweenInfo.new(0.12),{BackgroundColor3=Color3.fromRGB(36,36,56)}):Play();BL.TextColor3=W;bar.BackgroundTransparency=0;SC.Visible=true;curB=B;curS=SC
+    end
+    B.MouseButton1Click:Connect(act);return{Frame=SC,Activate=act}
+end
+
+local function sec(p,t) cr("TextLabel",{Size=UDim2.new(1,0,0,16),BackgroundTransparency=1,Text="  "..string.upper(t),TextColor3=ST,TextSize=10,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=3,Parent=p}) end
+
+local function btn(p,t,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundTransparency=1,ZIndex=3,Parent=p})
+    local B=cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundColor3=AC,Text=t,TextColor3=Color3.fromRGB(10,10,20),TextSize=12,Font=F,BorderSizePixel=0,ZIndex=4,Parent=W2});corner(B,7)
+    B.MouseButton1Click:Connect(function() if cb then pcall(cb) end end)
+end
+
+local function tog(p,t,def,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=3,Parent=p});corner(W2,7)
+    cr("TextLabel",{Size=UDim2.new(1,-52,1,0),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=t,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=W2})
+    local Tr=cr("Frame",{Size=UDim2.new(0,34,0,17),Position=UDim2.new(1,-42,0.5,-8),BackgroundColor3=Color3.fromRGB(50,50,70),BorderSizePixel=0,ZIndex=4,Parent=W2});corner(Tr,99)
+    local Kn=cr("Frame",{Size=UDim2.new(0,11,0,11),Position=UDim2.new(0,3,0.5,-5),BackgroundColor3=Color3.fromRGB(170,170,190),BorderSizePixel=0,ZIndex=5,Parent=Tr});corner(Kn,99)
+    local on=def or false
+    local function set(s) on=s
+        if s then TS:Create(Tr,TweenInfo.new(0.15),{BackgroundColor3=AC}):Play();TS:Create(Kn,TweenInfo.new(0.15),{Position=UDim2.new(0,20,0.5,-5),BackgroundColor3=Color3.fromRGB(255,255,255)}):Play()
+        else TS:Create(Tr,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(50,50,70)}):Play();TS:Create(Kn,TweenInfo.new(0.15),{Position=UDim2.new(0,3,0.5,-5),BackgroundColor3=Color3.fromRGB(170,170,190)}):Play() end
+        if cb then pcall(cb,s) end end;set(on)
+    cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundTransparency=1,Text="",ZIndex=6,Parent=W2}).MouseButton1Click:Connect(function()set(not on)end)
+end
+
+local function sldr(p,t,mn,mx,df,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,44),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=3,Parent=p});corner(W2,7)
+    cr("TextLabel",{Size=UDim2.new(0.6,0,0,22),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=t,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=W2})
+    local VL=cr("TextLabel",{Size=UDim2.new(0.4,-10,0,22),Position=UDim2.new(0.6,0,0,0),BackgroundTransparency=1,Text=tostring(df),TextColor3=AC,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Right,ZIndex=4,Parent=W2})
+    local Tr=cr("Frame",{Size=UDim2.new(1,-20,0,5),Position=UDim2.new(0,10,0,30),BackgroundColor3=Color3.fromRGB(45,45,65),BorderSizePixel=0,ZIndex=4,Parent=W2});corner(Tr,99)
+    local Fl=cr("Frame",{Size=UDim2.new((df-mn)/(mx-mn),0,1,0),BackgroundColor3=AC,BorderSizePixel=0,ZIndex=5,Parent=Tr});corner(Fl,99)
+    local Th=cr("Frame",{Size=UDim2.new(0,13,0,13),AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.new((df-mn)/(mx-mn),0,0.5,0),BackgroundColor3=Color3.fromRGB(255,255,255),BorderSizePixel=0,ZIndex=6,Parent=Tr});corner(Th,99)
+    local sl=false
+    local function upd(x) local r=math.clamp((x-Tr.AbsolutePosition.X)/Tr.AbsoluteSize.X,0,1);local v=math.floor(mn+(mx-mn)*r);VL.Text=tostring(v);Fl.Size=UDim2.new(r,0,1,0);Th.Position=UDim2.new(r,0,0.5,0);if cb then pcall(cb,v) end end
+    local SB=cr("TextButton",{Size=UDim2.new(1,0,0,20),Position=UDim2.new(0,0,0,24),BackgroundTransparency=1,Text="",ZIndex=7,Parent=W2})
+    SB.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then sl=true;upd(i.Position.X) end end)
+    SB.InputEnded:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then sl=false end end)
+    UIS.InputChanged:Connect(function(i) if sl and(i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then upd(i.Position.X) end end)
+end
+
+local function drop(p,tl,opts,cb)
+    local C=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundColor3=S2,BorderSizePixel=0,ClipsDescendants=false,ZIndex=10,Parent=p});corner(C,7)
+    cr("TextLabel",{Size=UDim2.new(0.55,0,1,0),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=tl,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=11,Parent=C})
+    local SL=cr("TextLabel",{Size=UDim2.new(0.35,-18,1,0),Position=UDim2.new(0.55,0,0,0),BackgroundTransparency=1,Text=opts[1] or "",TextColor3=AC,TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Right,ZIndex=11,Parent=C})
+    local AL=cr("TextLabel",{Size=UDim2.new(0,18,1,0),Position=UDim2.new(1,-20,0,0),BackgroundTransparency=1,Text="v",TextColor3=ST,TextSize=11,Font=F,ZIndex=11,Parent=C})
+    local L=cr("Frame",{Size=UDim2.new(1,0,0,0),Position=UDim2.new(0,0,1,3),BackgroundColor3=Color3.fromRGB(20,20,33),BorderSizePixel=0,ClipsDescendants=true,Visible=false,ZIndex=50,Parent=C});corner(L,7)
+    cr("UIListLayout",{SortOrder=Enum.SortOrder.LayoutOrder,Parent=L})
+    local IH,op=26,false
+    for _,o in ipairs(opts) do
+        cr("TextButton",{Size=UDim2.new(1,0,0,IH),BackgroundColor3=Color3.fromRGB(20,20,33),Text="  "..o,TextColor3=W,TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Left,BorderSizePixel=0,ZIndex=51,Parent=L}).MouseButton1Click:Connect(function()
+            SL.Text=o;op=false;AL.Text="v";TS:Create(L,TweenInfo.new(0.15),{Size=UDim2.new(1,0,0,0)}):Play();task.delay(0.16,function()L.Visible=false end);if cb then pcall(cb,o) end
+        end)
+    end
+    local th=#opts*IH
+    cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundTransparency=1,Text="",ZIndex=12,Parent=C}).MouseButton1Click:Connect(function()
+        op=not op;if op then L.Visible=true;AL.Text="^";TS:Create(L,TweenInfo.new(0.18),{Size=UDim2.new(1,0,0,th)}):Play()
+        else AL.Text="v";TS:Create(L,TweenInfo.new(0.15),{Size=UDim2.new(1,0,0,0)}):Play();task.delay(0.16,function()L.Visible=false end) end
+    end)
+end
+
+local T1=mkTab("Main");T1.Activate()
+sec(T1.Frame,"Actions")
+btn(T1.Frame,"Reset",function() local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.Health=0 end end)
+btn(T1.Frame,"Rejoin",function() game:GetService("TeleportService"):Teleport(game.PlaceId,P) end)
+btn(T1.Frame,"Anti-AFK",function() local VU=game:GetService("VirtualUser");P.Idled:Connect(function() VU:Button2Down(Vector2.new(0,0),Cam.CFrame);task.wait(1);VU:Button2Up(Vector2.new(0,0),Cam.CFrame) end) end)
+sec(T1.Frame,"Aimbot")
+tog(T1.Frame,"Aimbot",false,function(s)
+    AB.on=s
+    if s then startAB()
+    else AB.on=false;if AB.conn then AB.conn:Disconnect();AB.conn=nil end end
+end)
+tog(T1.Frame,"Team Check",true,function(s) AB.team=s end)
+tog(T1.Frame,"Wall Check",true,function(s) AB.wall=s end)
+sldr(T1.Frame,"Aimbot FOV",50,600,200,function(v) AB.fov=v end)
+sldr(T1.Frame,"Smoothing 1-10",1,10,3,function(v) AB.smooth=v/10 end)
+drop(T1.Frame,"Aim Part",{"Head","HumanoidRootPart"},function(v) AB.part=v end)
+
+local T2=mkTab("Player")
+sec(T2.Frame,"Movement")
+sldr(T2.Frame,"Walk Speed",16,250,16,function(v) local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.WalkSpeed=v end end)
+sldr(T2.Frame,"Jump Power",50,350,50,function(v) local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.JumpPower=v end end)
+drop(T2.Frame,"FOV",{"70","90","110","130"},function(v) Cam.FieldOfView=tonumber(v) or 70 end)
+
+local T3=mkTab("Visual")
+sec(T3.Frame,"ESP")
+tog(T3.Frame,"ESP",false,function(s)
+    ESP.on=s
+    if s then
+        buildESP();runESP()
+    else
+        ESP.on=false
+        if ESP.conn then ESP.conn:Disconnect();ESP.conn=nil end
+        clearESP()
+    end
+end)
+tog(T3.Frame,"ESP Team Check",true,function(s) ESP.team=s;if ESP.on then buildESP() end end)
+sec(T3.Frame,"Lighting")
+btn(T3.Frame,"Fullbright",function() local L=game:GetService("Lighting");L.Brightness=10;L.ClockTime=14;L.FogEnd=1e9;L.GlobalShadows=false end)
+btn(T3.Frame,"Reset Lighting",function() local L=game:GetService("Lighting");L.Brightness=1;L.ClockTime=14;L.FogEnd=100000;L.GlobalShadows=true end)
+
+print("[CoolGUI] Loaded!")pcall(function() game:GetService("CoreGui"):FindFirstChild("AimbotUniversal"):Destroy() end)
+
+local P=game:GetService("Players").LocalPlayer
+local TS=game:GetService("TweenService")
+local UIS=game:GetService("UserInputService")
+local RS=game:GetService("RunService")
+local Cam=workspace.CurrentCamera
+
+local AB={on=false,team=true,wall=true,fov=200,smooth=0.3,part="Head",conn=nil}
+local ESP={on=false,team=true,conn=nil,d={}}
+
+local function enemy(p)
+    if p==P or not p.Character then return false end
+    local h=p.Character:FindFirstChildWhichIsA("Humanoid")
+    if not h or h.Health<=0 then return false end
+    if AB.team and P.Team~=nil and p.Team==P.Team then return false end
+    return true
+end
+
+local function hasLOS(pt)
+    local ray=workspace:Raycast(Cam.CFrame.Position,(pt.Position-Cam.CFrame.Position).Unit*600,RaycastParams.new())
+    if not ray then return false end
+    return ray.Instance and ray.Instance:IsDescendantOf(pt.Parent)
+end
+
+local function startAB()
+    if AB.conn then AB.conn:Disconnect() end
+    AB.conn=RS.RenderStepped:Connect(function()
+        if not AB.on then return end
+        local best,bd=nil,AB.fov
+        local cx,cy=Cam.ViewportSize.X/2,Cam.ViewportSize.Y/2
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if enemy(p) then
+                local pt=p.Character:FindFirstChild(AB.part) or p.Character:FindFirstChild("HumanoidRootPart")
+                if pt then
+                    local s,v=Cam:WorldToViewportPoint(pt.Position)
+                    if v and s.Z>0 and (not AB.wall or hasLOS(pt)) then
+                        local d=math.sqrt((s.X-cx)^2+(s.Y-cy)^2)
+                        if d<bd then bd=d;best=p end
+                    end
+                end
+            end
+        end
+        if best and best.Character then
+            local pt=best.Character:FindFirstChild(AB.part) or best.Character:FindFirstChild("HumanoidRootPart")
+            if pt then Cam.CFrame=Cam.CFrame:Lerp(CFrame.new(Cam.CFrame.Position,pt.Position),AB.smooth) end
+        end
+    end)
+end
+
+local function clearESP()
+    for _,t in pairs(ESP.d) do for _,v in pairs(t) do pcall(function()v:Remove()end) end end
+    ESP.d={}
+end
+
+local function buildESP()
+    clearESP();if not ESP.on then return end
+    for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+        if p~=P and p.Character then
+            local isT=P.Team~=nil and p.Team==P.Team
+            local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+            local t={}
+            local n=Drawing.new("Text");n.Size=13;n.Color=col;n.Outline=true;n.Center=true;n.Visible=false;table.insert(t,n)
+            local hp=Drawing.new("Text");hp.Size=11;hp.Color=Color3.fromRGB(100,255,100);hp.Outline=true;hp.Center=true;hp.Visible=false;table.insert(t,hp)
+            for i=1,4 do local l=Drawing.new("Line");l.Color=col;l.Thickness=1.5;l.Visible=false;table.insert(t,l) end
+            ESP.d[p.Name]=t
+        end
+    end
+end
+
+local function runESP()
+    if ESP.conn then ESP.conn:Disconnect() end
+    ESP.conn=RS.RenderStepped:Connect(function()
+        if not ESP.on then clearESP();return end
+        -- Auto add new players
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if p~=P and p.Character and not ESP.d[p.Name] then
+                local isT=P.Team~=nil and p.Team==P.Team
+                local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+                local t={}
+                local n=Drawing.new("Text");n.Size=13;n.Color=col;n.Outline=true;n.Center=true;n.Visible=false;table.insert(t,n)
+                local hp=Drawing.new("Text");hp.Size=11;hp.Color=Color3.fromRGB(100,255,100);hp.Outline=true;hp.Center=true;hp.Visible=false;table.insert(t,hp)
+                for i=1,4 do local l=Drawing.new("Line");l.Color=col;l.Thickness=1.5;l.Visible=false;table.insert(t,l) end
+                ESP.d[p.Name]=t
+            end
+        end
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if p~=P and p.Character then
+                local hrp=p.Character:FindFirstChild("HumanoidRootPart")
+                local hum=p.Character:FindFirstChildWhichIsA("Humanoid")
+                local head=p.Character:FindFirstChild("Head")
+                local t=ESP.d[p.Name]
+                if not(hrp and hum and head and t) then continue end
+                local hs,hv=Cam:WorldToViewportPoint(head.Position+Vector3.new(0,0.6,0))
+                local fs=Cam:WorldToViewportPoint(hrp.Position-Vector3.new(0,3,0))
+                if not hv then for _,d in pairs(t) do pcall(function()d.Visible=false end) end;continue end
+                local isT=P.Team~=nil and p.Team==P.Team
+                local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+                local bh=math.abs(hs.Y-fs.Y);local bw=bh*0.55;local bx=hs.X-bw/2;local by=hs.Y
+                t[1].Position=Vector2.new(hs.X,by-16);t[1].Text=p.Name;t[1].Color=col;t[1].Visible=true
+                t[2].Position=Vector2.new(hs.X,by-4);t[2].Text="HP:"..math.floor(hum.Health);t[2].Visible=true
+                local ln={{Vector2.new(bx,by),Vector2.new(bx+bw,by)},{Vector2.new(bx,by+bh),Vector2.new(bx+bw,by+bh)},{Vector2.new(bx,by),Vector2.new(bx,by+bh)},{Vector2.new(bx+bw,by),Vector2.new(bx+bw,by+bh)}}
+                for i,v in ipairs(ln) do t[i+2].From=v[1];t[i+2].To=v[2];t[i+2].Color=col;t[i+2].Visible=true end
+            end
+        end
+    end)
+end
+
+-- GUI BUILD
+local SG=Instance.new("ScreenGui");SG.Name="AimbotUniversal";SG.ResetOnSpawn=false;SG.DisplayOrder=999
+pcall(function()SG.Parent=game:GetService("CoreGui")end)
+if SG.Parent~=game:GetService("CoreGui") then SG.Parent=P.PlayerGui end
+
+local W=Color3.fromRGB(230,230,240);local BG=Color3.fromRGB(18,18,28);local S2=Color3.fromRGB(25,25,38)
+local TB=Color3.fromRGB(30,30,45);local AC=Color3.fromRGB(100,180,255);local ST=Color3.fromRGB(140,140,160)
+local F=Enum.Font.GothamBold
+
+local function cr(cls,props) local o=Instance.new(cls);for k,v in pairs(props) do o[k]=v end;return o end
+local function corner(p,r) cr("UICorner",{CornerRadius=UDim.new(0,r or 8),Parent=p}) end
+
+local Main=cr("Frame",{Size=UDim2.new(0,480,0,350),Position=UDim2.new(0.5,-240,0.5,-175),BackgroundColor3=BG,BorderSizePixel=0,ClipsDescendants=false,Parent=SG});corner(Main,10)
+local Top=cr("Frame",{Size=UDim2.new(1,0,0,42),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=2,Parent=Main});corner(Top,10)
+cr("Frame",{Size=UDim2.new(1,0,0,10),Position=UDim2.new(0,0,1,-10),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=2,Parent=Top})
+local ac=cr("Frame",{Size=UDim2.new(0,3,0,20),Position=UDim2.new(0,12,0.5,-10),BackgroundColor3=AC,BorderSizePixel=0,ZIndex=3,Parent=Top});corner(ac,99)
+cr("TextLabel",{Size=UDim2.new(0,200,1,0),Position=UDim2.new(0,22,0,0),BackgroundTransparency=1,Text="Aimbot Universal",TextColor3=W,TextSize=14,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=3,Parent=Top})
+
+local function topBtn(x,bg,lbl)
+    local b=cr("TextButton",{Size=UDim2.new(0,25,0,25),Position=UDim2.new(1,x,0.5,-12),BackgroundColor3=bg,Text=lbl,TextColor3=Color3.fromRGB(255,255,255),TextSize=11,Font=F,BorderSizePixel=0,ZIndex=4,Parent=Top});corner(b,6);return b
+end
+topBtn(-32,Color3.fromRGB(255,70,70),"X").MouseButton1Click:Connect(function()
+    if AB.conn then AB.conn:Disconnect() end;if ESP.conn then ESP.conn:Disconnect() end;clearESP();SG:Destroy()
+end)
+local mini=false
+local MinBtnRef=topBtn(-62,Color3.fromRGB(255,180,40),"-")
+
+local drag,dp,fp=false,nil,nil
+Top.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then drag=true;dp=i.Position;fp=Main.Position end end)
+Top.InputEnded:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then drag=false end end)
+UIS.InputChanged:Connect(function(i) if drag and(i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then local d=i.Position-dp;Main.Position=UDim2.new(fp.X.Scale,fp.X.Offset+d.X,fp.Y.Scale,fp.Y.Offset+d.Y) end end)
+
+local Side=cr("Frame",{Size=UDim2.new(0,108,1,-50),Position=UDim2.new(0,6,0,46),BackgroundColor3=TB,BorderSizePixel=0,ZIndex=2,Parent=Main});corner(Side,9)
+cr("UIListLayout",{Padding=UDim.new(0,4),SortOrder=Enum.SortOrder.LayoutOrder,Parent=Side})
+cr("UIPadding",{PaddingTop=UDim.new(0,7),PaddingLeft=UDim.new(0,6),PaddingRight=UDim.new(0,6),Parent=Side})
+local CH=cr("Frame",{Size=UDim2.new(1,-122,1,-50),Position=UDim2.new(0,120,0,46),BackgroundTransparency=1,ClipsDescendants=false,ZIndex=2,Parent=Main})
+
+-- Hook minimize AFTER Side and CH exist
+MinBtnRef.MouseButton1Click:Connect(function()
+    mini=not mini
+    Side.Visible=not mini
+    CH.Visible=not mini
+    TS:Create(Main,TweenInfo.new(0.2),{Size=mini and UDim2.new(0,480,0,42) or UDim2.new(0,480,0,350)}):Play()
+end)
+
+local curB,curS=nil,nil
+local function mkTab(name)
+    local B=cr("TextButton",{Size=UDim2.new(1,0,0,30),BackgroundColor3=TB,Text="",BorderSizePixel=0,ZIndex=3,Parent=Side});corner(B,7)
+    local BL=cr("TextLabel",{Size=UDim2.new(1,-8,1,0),Position=UDim2.new(0,8,0,0),BackgroundTransparency=1,Text=name,TextColor3=ST,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=B})
+    local bar=cr("Frame",{Size=UDim2.new(0,3,0,14),Position=UDim2.new(0,1,0.5,-7),BackgroundColor3=AC,BackgroundTransparency=1,BorderSizePixel=0,ZIndex=5,Parent=B});corner(bar,99)
+    local SC=cr("ScrollingFrame",{Size=UDim2.new(1,-4,1,-4),Position=UDim2.new(0,2,0,2),BackgroundTransparency=1,ScrollBarThickness=3,ScrollBarImageColor3=AC,CanvasSize=UDim2.new(0,0,0,0),AutomaticCanvasSize=Enum.AutomaticSize.Y,Visible=false,ZIndex=3,Parent=CH})
+    cr("UIListLayout",{Padding=UDim.new(0,6),SortOrder=Enum.SortOrder.LayoutOrder,Parent=SC});cr("UIPadding",{PaddingTop=UDim.new(0,4),PaddingRight=UDim.new(0,4),Parent=SC})
+    local function act()
+        if curB then TS:Create(curB,TweenInfo.new(0.12),{BackgroundColor3=TB}):Play()
+            for _,v in pairs(curB:GetChildren()) do if v:IsA("TextLabel") then v.TextColor3=ST end;if v:IsA("Frame") then v.BackgroundTransparency=1 end end end
+        if curS then curS.Visible=false end
+        TS:Create(B,TweenInfo.new(0.12),{BackgroundColor3=Color3.fromRGB(36,36,56)}):Play();BL.TextColor3=W;bar.BackgroundTransparency=0;SC.Visible=true;curB=B;curS=SC
+    end
+    B.MouseButton1Click:Connect(act);return{Frame=SC,Activate=act}
+end
+
+local function sec(p,t) cr("TextLabel",{Size=UDim2.new(1,0,0,16),BackgroundTransparency=1,Text="  "..string.upper(t),TextColor3=ST,TextSize=10,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=3,Parent=p}) end
+
+local function btn(p,t,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundTransparency=1,ZIndex=3,Parent=p})
+    local B=cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundColor3=AC,Text=t,TextColor3=Color3.fromRGB(10,10,20),TextSize=12,Font=F,BorderSizePixel=0,ZIndex=4,Parent=W2});corner(B,7)
+    B.MouseButton1Click:Connect(function() if cb then pcall(cb) end end)
+end
+
+local function tog(p,t,def,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=3,Parent=p});corner(W2,7)
+    cr("TextLabel",{Size=UDim2.new(1,-52,1,0),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=t,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=W2})
+    local Tr=cr("Frame",{Size=UDim2.new(0,34,0,17),Position=UDim2.new(1,-42,0.5,-8),BackgroundColor3=Color3.fromRGB(50,50,70),BorderSizePixel=0,ZIndex=4,Parent=W2});corner(Tr,99)
+    local Kn=cr("Frame",{Size=UDim2.new(0,11,0,11),Position=UDim2.new(0,3,0.5,-5),BackgroundColor3=Color3.fromRGB(170,170,190),BorderSizePixel=0,ZIndex=5,Parent=Tr});corner(Kn,99)
+    local on=def or false
+    local function set(s) on=s
+        if s then TS:Create(Tr,TweenInfo.new(0.15),{BackgroundColor3=AC}):Play();TS:Create(Kn,TweenInfo.new(0.15),{Position=UDim2.new(0,20,0.5,-5),BackgroundColor3=Color3.fromRGB(255,255,255)}):Play()
+        else TS:Create(Tr,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(50,50,70)}):Play();TS:Create(Kn,TweenInfo.new(0.15),{Position=UDim2.new(0,3,0.5,-5),BackgroundColor3=Color3.fromRGB(170,170,190)}):Play() end
+        if cb then pcall(cb,s) end end;set(on)
+    cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundTransparency=1,Text="",ZIndex=6,Parent=W2}).MouseButton1Click:Connect(function()set(not on)end)
+end
+
+local function sldr(p,t,mn,mx,df,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,44),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=3,Parent=p});corner(W2,7)
+    cr("TextLabel",{Size=UDim2.new(0.6,0,0,22),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=t,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=W2})
+    local VL=cr("TextLabel",{Size=UDim2.new(0.4,-10,0,22),Position=UDim2.new(0.6,0,0,0),BackgroundTransparency=1,Text=tostring(df),TextColor3=AC,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Right,ZIndex=4,Parent=W2})
+    local Tr=cr("Frame",{Size=UDim2.new(1,-20,0,5),Position=UDim2.new(0,10,0,30),BackgroundColor3=Color3.fromRGB(45,45,65),BorderSizePixel=0,ZIndex=4,Parent=W2});corner(Tr,99)
+    local Fl=cr("Frame",{Size=UDim2.new((df-mn)/(mx-mn),0,1,0),BackgroundColor3=AC,BorderSizePixel=0,ZIndex=5,Parent=Tr});corner(Fl,99)
+    local Th=cr("Frame",{Size=UDim2.new(0,13,0,13),AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.new((df-mn)/(mx-mn),0,0.5,0),BackgroundColor3=Color3.fromRGB(255,255,255),BorderSizePixel=0,ZIndex=6,Parent=Tr});corner(Th,99)
+    local sl=false
+    local function upd(x) local r=math.clamp((x-Tr.AbsolutePosition.X)/Tr.AbsoluteSize.X,0,1);local v=math.floor(mn+(mx-mn)*r);VL.Text=tostring(v);Fl.Size=UDim2.new(r,0,1,0);Th.Position=UDim2.new(r,0,0.5,0);if cb then pcall(cb,v) end end
+    local SB=cr("TextButton",{Size=UDim2.new(1,0,0,20),Position=UDim2.new(0,0,0,24),BackgroundTransparency=1,Text="",ZIndex=7,Parent=W2})
+    SB.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then sl=true;upd(i.Position.X) end end)
+    SB.InputEnded:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then sl=false end end)
+    UIS.InputChanged:Connect(function(i) if sl and(i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then upd(i.Position.X) end end)
+end
+
+local function drop(p,tl,opts,cb)
+    local C=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundColor3=S2,BorderSizePixel=0,ClipsDescendants=false,ZIndex=10,Parent=p});corner(C,7)
+    cr("TextLabel",{Size=UDim2.new(0.55,0,1,0),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=tl,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=11,Parent=C})
+    local SL=cr("TextLabel",{Size=UDim2.new(0.35,-18,1,0),Position=UDim2.new(0.55,0,0,0),BackgroundTransparency=1,Text=opts[1] or "",TextColor3=AC,TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Right,ZIndex=11,Parent=C})
+    local AL=cr("TextLabel",{Size=UDim2.new(0,18,1,0),Position=UDim2.new(1,-20,0,0),BackgroundTransparency=1,Text="v",TextColor3=ST,TextSize=11,Font=F,ZIndex=11,Parent=C})
+    local L=cr("Frame",{Size=UDim2.new(1,0,0,0),Position=UDim2.new(0,0,1,3),BackgroundColor3=Color3.fromRGB(20,20,33),BorderSizePixel=0,ClipsDescendants=true,Visible=false,ZIndex=50,Parent=C});corner(L,7)
+    cr("UIListLayout",{SortOrder=Enum.SortOrder.LayoutOrder,Parent=L})
+    local IH,op=26,false
+    for _,o in ipairs(opts) do
+        cr("TextButton",{Size=UDim2.new(1,0,0,IH),BackgroundColor3=Color3.fromRGB(20,20,33),Text="  "..o,TextColor3=W,TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Left,BorderSizePixel=0,ZIndex=51,Parent=L}).MouseButton1Click:Connect(function()
+            SL.Text=o;op=false;AL.Text="v";TS:Create(L,TweenInfo.new(0.15),{Size=UDim2.new(1,0,0,0)}):Play();task.delay(0.16,function()L.Visible=false end);if cb then pcall(cb,o) end
+        end)
+    end
+    local th=#opts*IH
+    cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundTransparency=1,Text="",ZIndex=12,Parent=C}).MouseButton1Click:Connect(function()
+        op=not op;if op then L.Visible=true;AL.Text="^";TS:Create(L,TweenInfo.new(0.18),{Size=UDim2.new(1,0,0,th)}):Play()
+        else AL.Text="v";TS:Create(L,TweenInfo.new(0.15),{Size=UDim2.new(1,0,0,0)}):Play();task.delay(0.16,function()L.Visible=false end) end
+    end)
+end
+
+local T1=mkTab("Main");T1.Activate()
+sec(T1.Frame,"Actions")
+btn(T1.Frame,"Reset",function() local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.Health=0 end end)
+btn(T1.Frame,"Rejoin",function() game:GetService("TeleportService"):Teleport(game.PlaceId,P) end)
+btn(T1.Frame,"Anti-AFK",function() local VU=game:GetService("VirtualUser");P.Idled:Connect(function() VU:Button2Down(Vector2.new(0,0),Cam.CFrame);task.wait(1);VU:Button2Up(Vector2.new(0,0),Cam.CFrame) end) end)
+sec(T1.Frame,"Aimbot")
+tog(T1.Frame,"Aimbot",false,function(s)
+    AB.on=s
+    if s then startAB()
+    else AB.on=false;if AB.conn then AB.conn:Disconnect();AB.conn=nil end end
+end)
+tog(T1.Frame,"Team Check",true,function(s) AB.team=s end)
+tog(T1.Frame,"Wall Check",true,function(s) AB.wall=s end)
+sldr(T1.Frame,"Aimbot FOV",50,600,200,function(v) AB.fov=v end)
+sldr(T1.Frame,"Smoothing 1-10",1,10,3,function(v) AB.smooth=v/10 end)
+drop(T1.Frame,"Aim Part",{"Head","HumanoidRootPart"},function(v) AB.part=v end)
+
+local T2=mkTab("Player")
+sec(T2.Frame,"Movement")
+sldr(T2.Frame,"Walk Speed",16,250,16,function(v) local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.WalkSpeed=v end end)
+sldr(T2.Frame,"Jump Power",50,350,50,function(v) local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.JumpPower=v end end)
+drop(T2.Frame,"FOV",{"70","90","110","130"},function(v) Cam.FieldOfView=tonumber(v) or 70 end)
+
+local T3=mkTab("Visual")
+sec(T3.Frame,"ESP")
+tog(T3.Frame,"ESP",false,function(s)
+    ESP.on=s
+    if s then
+        buildESP();runESP()
+    else
+        ESP.on=false
+        if ESP.conn then ESP.conn:Disconnect();ESP.conn=nil end
+        clearESP()
+    end
+end)
+tog(T3.Frame,"ESP Team Check",true,function(s) ESP.team=s;if ESP.on then buildESP() end end)
+sec(T3.Frame,"Lighting")
+btn(T3.Frame,"Fullbright",function() local L=game:GetService("Lighting");L.Brightness=10;L.ClockTime=14;L.FogEnd=1e9;L.GlobalShadows=false end)
+btn(T3.Frame,"Reset Lighting",function() local L=game:GetService("Lighting");L.Brightness=1;L.ClockTime=14;L.FogEnd=100000;L.GlobalShadows=true end)
+
+print("[CoolGUI] Loaded!")
