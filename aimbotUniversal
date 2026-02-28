@@ -1,1 +1,301 @@
---[[ v1.0.0 https://wearedevs.net/obfuscator ]] return(function(...)local C={"\069\047\086\061";"\089\114\057\100\055\043\061\061","\110\080\051\073\120\066\106\078\082\048\080\082\112\066\066\115\073\065\085\108\118\102\097\067\043\122\117\068\108\043\061\061","\089\122\122\077\087\088\071\100\065\077\070\050\120\066\073\061","\049\078\080\111","\103\057\067\085\049\104\084\083\068\074\107\078\100\111\105\113\068\121\084\065","\117\097\117\070\074\068\101\105\115\086\115\054\109\088\120\069\055\121\061\061","\099\103\049\117\056\084\056\073\067\054\087\085\088\069\069\083","\098\043\098\114\103\117\082\088\076\121\119\081\100\108\113\073\083\099\084\048\053\043\061\061","\085\108\113\101\084\099\103\100\080\104\077\109\114\066\081\103";"\119\109\122\053\075\055\087\100\084\043\061\061","\102\082\088\089\110\043\051\056\069\112\070\061";"\071\083\056\072\101\087\052\053\089\047\088\104\113\043\074\089\067\073\048\061";"\072\107\079\069\088\072\113\061","\121\055\051\082\043\083\075\086\056\088\106\061","\067\098\116\107\055\084\100\122";"\090\047\098\068\108\099\061\061";"\053\049\088\068\053\107\082\122\056\049\122\050\103\112\068\099\052\117\069\121\078\043\061\061";"\086\122\122\085\089\101\086\061","\112\118\047\122\066\121\061\061";"\105\066\103\081\082\097\078\061";"\065\086\054\069\090\056\078\102";"\108\106\054\080\115\116\071\067\070\085\070\061";"\079\050\097\088\118\104\056\121","\101\081\080\120\079\102\116\078";"\079\110\102\054\104\098\080\118";"\069\052\074\112\087\106\043\119\107\113\073\061","\070\117\112\055\073\051\080\115\112\051\104\061","\076\047\111\101";"\072\083\072\081\081\099\061\061";"\087\083\115\070","\121\071\088\073\107\083\075\079\066\109\101\077\122\121\061\061","\105\076\043\086\111\083\074\084\070\068\116\087\077\121\061\061";"\077\083\068\098\070\114\113\061","\112\086\070\083\076\057\050\115\109\068\122\084\055\087\086\083\109\052\081\061";"\107\119\071\099","\109\122\115\074\055\116\081\061";"\078\121\061\061","\107\066\116\085\073\112\068\081\069\084\049\078\105\111\073\097\118\109\099\112\075\099\061\061","\098\116\118\077\054\043\061\061";"\055\084\100\079\056\047\097\102\090\072\114\070\089\078\053\077\111\051\112\074\087\078\061\061";"\068\103\043\105\074\108\051\077";"\069\090\100\049\101\097\103\097\088\098\086\061";"\097\081\051\090\055\120\086\043","\105\080\078\109\100\117\070\061","\079\086\051\106\115\097\117\069";"\107\051\043\082\056\084\122\048\087\057\114\070\089\068\057\098\105\105\120\073","\119\103\118\065\057\112\116\112\111\081\055\118\043\043\061\061";"\097\106\116\047","\083\113\070\086\118\121\061\061","\103\117\068\065\110\043\061\061";"\080\097\089\089\106\099\061\061","\102\098\051\043\069\073\098\116\118\067\088\110\116\118\103\110";"\100\083\080\085\073\106\048\061","\066\075\057\077","\090\081\105\099\049\098\070\061";"\049\113\083\104\081\109\086\043\081\086\102\077";"\114\085\065\085\120\081\049\056\107\065\122\102\112\043\113\061";"\109\109\097\054\115\114\111\076\106\057\088\051","\076\050\082\071\074\097\065\066\087\065\101\052\100\052\077\090","\043\070\115\083\080\088\065\050","\071\088\074\049\115\121\085\050\067\043\061\061","\088\065\116\121\122\049\054\107\070\122\113\073\117\078\061\061";"\072\089\107\087\070\110\076\099\100\074\115\057\099\071\073\106\071\079\043\100","\101\069\078\061","\090\105\111\072","\043\070\071\121\087\122\111\097\075\076\080\119\055\047\071\066\106\118\084\101\121\054\069\108","\120\112\047\084","\056\055\083\103\113\122\081\101","\057\114\066\043\105\112\102\079\080\043\061\061";"\048\086\101\080";"\050\102\069\068\081\047\086\061";"\055\069\090\120\118\088\072\055\069\121\061\061","\108\121\061\061","\099\100\087\104\067\099\061\061","\102\114\117\078","\099\075\087\106\113\106\050\122\103\047\121\061","\088\102\116\087\074\074\076\120","\071\079\103\112\057\087\084\053","\055\111\069\104\067\077\098\098\100\103\066\089\088\050\087\090\056\121\061\061";"\051\090\122\056\118\081\072\078\111\073\078\061","\099\079\121\105\065\071\048\061";"\076\050\120\054\106\066\077\052\055\087\120\114\088\067\082\050\074\114\086\061";"\118\115\083\048\055\054\080\061","\119\053\119\085","\104\099\061\061","\103\049\057\071\051\078\061\061","\043\070\065\055\120\076\101\077\100\097\105\066\080\068\115\103\109\121\061\061";"\117\049\074\053\070\066\120\113\121\082\110\086\071\116\065\118\085\073\089\104\051\043\061\061";"\076\079\073\076","\110\106\112\052\102\117\106\072","\109\052\109\098\117\067\049\083\104\099\061\061","\105\078\056\043\100\068\099\053\073\068\048\121\067\112\072\117\087\050\108\080\112\122\121\061","\068\052\111\068\104\054\048\107\100\078\069\076\066\105\074\086\121\117\111\053\052\099\061\061";"\103\109\120\070\117\088\109\052\100\086\089\047\112\052\069\108\055\099\061\061","\118\049\067\103\089\103\105\072\112\047\047\083\080\075\052\087\100\067\108\072\111\075\116\107\053\054\111\043\122\121\061\061";"\089\113\053\052\119\078\061\061","\089\070\052\097\121\100\056\074\101\083\075\083\116\122\051\106\122\097\080\105";"\056\081\078\057";"\117\067\049\068\117\114\077\082\100\052\106\061","\109\067\122\105\106\067\109\083\073\066\120\050\117\067\109\098\117\067\109\086\073\043\061\061","\084\111\084\110\103\099\061\061";"\072\117\081\080\101\055\110\076\057\072\113\061","\102\078\087\103\054\084\097\109\066\099\061\061";"\068\115\087\061","\097\050\074\097\099\115\115\090\065\067\116\073\070\099\061\061";"\111\116\077\070\079\099\061\061","\055\087\122\122\111\066\109\105\076\088\120\048\055\057\050\066\115\068\043\061","\065\099\061\061";"\082\072\085\073\100\049\122\089\076\085\053\073\043\090\102\051\086\102\083\121\069\121\061\061","\055\087\054\089\079\115\054\113\068\108\118\119\069\076\071\054\053\078\061\061";"\106\067\077\098\080\087\069\073\080\070\108\069\109\079\122\074\076\076\104\061","\043\071\088\111\070\078\061\061";"\108\090\057\054\112\074\114\111\100\113\081\061";"\080\078\120\101\050\072\081\053\113\121\061\061";"\081\075\116\106\055\078\061\061";"\108\088\073\068\102\074\071\073\097\048\119\043","\074\122\117\077","\122\114\049\090\050\090\085\055\076\121\061\061";"\108\100\106\068";"\100\067\082\051\120\052\050\081\087\066\070\068\103\079\082\077\074\079\066\061","\097\088\110\047\107\078\061\061","\078\090\069\052\068\078\061\061","\104\057\055\115\074\050\120\087\115\052\109\101\080\076\089\090\076\078\061\061";"\114\075\056\104\100\108\057\066\078\076\086\061";"\114\056\043\108\121\078\061\061";"\114\090\113\088\098\084\098\090\057\078\113\061","\057\115\071\084\097\121\061\061";"\067\087\087\052\108\049\047\106","\109\052\109\098\117\067\049\083\104\121\061\061","\085\074\080\079\081\069\053\049\085\115\104\120","\109\087\120\082\100\043\061\061";"\057\115\071\118\067\122\071\072\085\103\070\061","\067\111\084\087","\112\054\102\068\068\103\085\116\100\078\061\061","\118\053\078\088\055\073\099\057\068\073\117\104\080\057\070\105\078\108\107\102","\082\105\105\075\100\113\069\086\048\090\049\078\090\087\081\116\084\057\067\083","\097\083\090\114\065\075\088\078","\067\105\070\071\074\078\061\061";"\118\049\121\108";"\086\077\053\088\047\090\106\061","\101\111\074\077\099\090\074\052\072\054\111\113\097\110\057\084\047\078\061\061";"\078\054\106\119\090\120\074\116\083\066\104\061","\073\047\079\114","\085\052\077\081\112\100\048\110\080\048\066\061","\051\049\114\087","\109\085\117\085\100\086\065\086\115\065\089\105\115\087\105\050","\074\065\102\089\051\078\061\061","\074\050\106\065\043\070\065\111\112\090\055\116\103\086\122\101\080\099\061\061","\050\048\116\055\087\101\074\114\102\099\061\061";"\108\086\073\086\119\075\057\069\079\084\084\047\056\067\067\065","\115\082\053\112\106\114\087\061";"\115\118\052\111\097\119\080\061","\043\101\122\055\069\118\079\079\072\099\122\057\068\122\116\118";"\050\118\122\120\113\078\061\061","\089\069\079\065\084\120\107\087\054\110\119\057";"\084\117\114\106\056\067\121\109\055\119\080\086\053\043\061\061","\088\118\047\079\073\084\086\083\078\055\105\067\120\099\061\061";"\115\083\077\051\071\121\121\112";"\052\097\054\120\102\121\048\075";"\068\107\078\118\112\111\100\076\066\099\061\061","\078\080\083\113\111\043\061\061","\111\069\048\122\076\043\061\061","\053\047\118\107\116\083\055\081\104\121\061\061","\106\106\087\061";"\087\120\065\049";"\049\072\112\043\101\078\067\072\066\107\073\073\120\043\109\112";"\112\050\120\066";"\074\108\097\066\051\121\050\051\120\115\089\070\102\081\089\073\112\099\061\061";"\116\114\078\088\081\078\065\043","\043\074\099\074\073\119\089\107\074\121\061\061";"\071\078\078\080\067\074\106\079\119\078\061\061","\106\052\086\084\054\121\061\061";"\100\066\105\121\076\066\082\048\117\067\120\067\117\090\109\051\106\070\099\061","\083\105\085\103\055\119\122\085";"\082\121\072\085\076\051\056\084\100\106\081\076\104\082\054\122\056\073\100\086\111\078\061\061","\110\087\100\103\079\122\112\088\057\107\073\053","\071\077\057\088\073\043\061\061";"\052\049\087\109";"\082\077\114\074\104\067\067\077\112\079\068\114";"\103\078\061\061";"\071\082\111\113\121\121\061\061","\051\075\078\113\043\043\061\061","\106\081\121\052\065\120\118\061";"\065\053\122\065";"\052\079\073\119\107\121\107\099\078\117\117\050\084\121\061\061";"\119\057\098\088\078\056\106\108\121\048\048\061";"\076\098\089\070";"\078\120\066\054\117\104\054\087\087\100\100\113\072\055\099\061","\071\068\103\086\102\065\047\109\098\109\048\061";"\104\086\089\050\106\085\117\057\080\088\120\047\109\087\055\120\074\121\061\061","\112\054\104\049\089\109\083\086";"\103\052\065\114\103\076\089\074\055\087\105\085\087\050\073\108";"\067\108\099\118\067\051\049\109\057\118\056\121\110\086\088\101\109\067\105\088\117\113\104\061";"\072\103\056\049\070\043\061\061";"\084\050\111\084\115\100\113\061";"\115\097\070\083\100\052\104\068\076\070\049\120\112\090\113\108\043\050\104\061","\100\071\090\069\112\076\053\066\083\122\098\113\078\122\082\069\071\088\073\061";"\055\054\050\077\085\100\099\097\113\070\108\050\073\072\065\052\116\057\073\103\084\043\061\061","\103\052\080\049\111\099\061\061";"\086\102\115\079\119\103\080\098\118\050\099\117\099\043\061\061";"\074\088\069\068\117\067\122\056\080\097\087\061";"\053\074\051\054\088\057\078\106\077\098\077\080\056\120\079\103\083\089\078\108","\082\074\114\084\104\049\087\077\113\072\102\115";"\071\113\048\080\111\065\113\061","\098\084\087\074\071\078\116\101\066\071\043\103\104\066\050\117";"\120\052\050\056\115\066\115\082\106\079\055\070\043\097\089\082\100\067\043\061";"\078\110\080\057\115\067\070\110";"\103\088\108\043\087\121\061\061";"\077\079\115\051\078\099\043\101","\048\103\114\079\053\080\066\085\113\108\066\067\100\089\117\114\119\121\061\061","\101\122\053\116\049\086\121\061","\051\106\106\061","\103\085\077\074\115\076\073\057\104\050\099\070\103\076\120\071\100\078\061\061";"\090\078\061\061","\048\090\054\074\114\089\072\120","\080\043\104\085\084\078\061\061","\117\097\049\083\103\057\055\121\080\088\055\050";"\102\121\061\061";"\076\052\065\073\103\097\117\052\100\086\080\068\100\052\121\070\115\099\061\061";"\080\088\088\072","\087\052\122\069\080\097\122\068\117\122\101\089\106\052\122\105\106\121\061\061","\100\111\098\047","\065\098\075\104\056\078\088\067\106\057\108\069\117\121\101\090\102\065\113\061","\116\105\090\083","\065\086\111\101\113\067\106\061","\089\088\071\077\073\098\051\052\082\072\079\072\098\057\057\118\090\056\078\061";"\108\099\054\065","\043\097\049\056\100\052\109\098\117\078\061\061","\106\114\052\089\085\069\116\122\043\051\054\087\052\053\110\078\116\099\061\061";"\108\071\097\111\086\068\112\082\102\116\080\047\120\055\080\107\067\079\081\061","\120\057\120\116\106\122\101\104\087\070\109\120\120\122\117\120\104\121\061\061";"\100\088\085\076\081\078\061\061";"\084\079\113\052\074\120\115\118\076\047\114\106","\065\078\061\061","\083\070\083\120\099\078\113\061","\066\118\122\081\102\115\101\048\070\068\080\061","\053\071\081\081\070\078\055\116\116\121\061\061","\085\090\055\111\078\067\111\047\069\084\067\121\057\103\099\061";"\087\052\109\105\100\057\115\050";"\122\118\081\117\074\118\113\061","\047\114\104\090\115\110\098\076\053\089\121\043\098\113\116\073\043\112\109\111\050\099\061\061";"\076\086\089\083\087\087\109\102\109\109\082\054\100\085\099\065","\090\099\120\074\049\117\053\065\107\085\118\070\071\057\102\102\075\117\115\067\104\078\061\061";"\101\112\114\120\078\121\061\061";"\054\122\102\112\054\050\089\106","\115\048\077\084\084\121\061\061";"\082\057\119\083\105\075\110\103\079\099\110\079\072\120\075\121\117\121\061\061";"\043\057\115\057\113\078\061\061";"\119\086\073\118\072\121\061\061";"\108\107\079\052\113\077\080\077\082\043\061\061";"\111\076\101\081","\081\099\050\117\056\087\050\078";"\108\120\101\115\067\054\069\119\075\109\117\079\089\073\101\070\068\112\117\049","\120\067\109\068\117\114\077\116\112\043\061\061";"\114\056\104\069","\117\108\104\057\097\099\118\061";"\103\077\055\055\070\078\061\061","\088\065\106\081\066\106\080\076\119\073\054\112","\069\066\099\066\078\099\061\061";"\120\098\086\083\075\121\061\061","\111\101\066\107\056\113\081\080\099\112\076\067\054\121\071\099\117\088\117\053\111\122\053\090\055\047\050\103\086\043\061\061";"\106\122\117\057\106\088\055\085\111\067\115\122\074\086\055\081\088\043\061\061","\110\119\082\114\048\099\061\061","\078\078\051\080";"\076\047\105\109\053\088\083\072";"\080\043\081\120","\050\065\112\089\074\114\050\074\051\114\050\115\121\052\113\061","\071\117\084\066\120\055\086\061";"\082\050\071\116\053\079\117\050\115\121\089\076\088\079\056\107";"\084\087\105\050\069\057\104\102","\098\097\100\073\054\103\112\076\098\111\116\053\053\119\075\120\069\121\061\061","\052\087\081\061";"\117\122\049\090\114\078\061\061","\085\054\118\106\069\048\108\077\075\113\087\056\071\065\077\109";"\090\065\049\048\115\088\081\061","\051\074\087\055","\081\078\078\075\070\086\087\069\068\097\072\050\085\075\108\053\102\043\105\119";"\098\103\056\106\117\067\117\076\118\121\071\079\098\117\048\061","\116\100\067\052","\078\086\075\102\074\078\074\085\051\065\086\078\070\099\061\061","\081\053\099\067\110\048\073\050\085\109\065\122\066\043\061\061";"\113\120\065\120\114\121\061\061";"\049\089\109\080\114\088\080\047\114\075\043\061","\085\083\065\107\090\049\112\121\107\112\053\105\080\066\057\050\051\121\061\061","\081\117\119\113\067\121\061\061","\080\099\054\081\103\078\088\117","\073\117\104\079\116\111\051\067\111\077\079\116\080\099\061\061";"\081\043\099\081\043\117\072\076","\108\097\115\078\110\043\061\061","\082\113\085\077","\047\118\090\121\106\079\049\104\079\057\078\061";"\090\115\065\070\057\121\061\061";"\107\077\105\069\081\078\088\109\102\121\048\061";"\081\081\084\087\057\112\054\098\065\106\070\103\085\116\057\048\054\099\061\061";"\089\112\057\086\108\099\061\061";"\074\086\065\089\055\122\122\056\106\087\069\121\104\090\089\110\080\087\043\061";"\106\100\105\098\079\108\106\097\080\078\080\117\121\111\047\103\104\068\070\061","\048\122\066\080","\047\047\057\107\077\120\107\067\074\097\081\079\065\105\105\101\098\098\065\114","\111\099\057\078\115\043\061\061";"\084\110\084\098\051\110\121\109\078\078\061\061","\087\052\120\121\109\090\080\070\103\067\082\114\104\065\099\083";"\116\069\074\043\100\056\054\121\116\066\054\111\113\107\081\080\075\067\079\107","\056\109\113\070\078\109\070\085";"\103\074\070\068","\117\081\114\115\088\099\061\061";"\089\077\099\054\098\115\066\113\099\043\099\061";"\109\097\109\079","\057\090\117\053\078\043\061\061";"\051\076\122\077\084\082\090\081\078\043\061\061","\115\097\065\089\117\067\055\113","\051\121\097\122\080\073\099\061";"\089\073\072\117\112\103\070\061";"\104\083\079\114";"\081\113\108\048\049\099\080\061";"\071\116\054\102\118\097\072\088\098\112\081\101","\108\054\108\088\116\115\051\086\083\121\061\061";"\100\088\051\108\081\043\070\061","\052\089\097\114\114\071\085\080\101\117\065\069";"\114\120\118\108\080\103\083\088\057\087\074\107\043\070\048\088\083\043\061\061","\049\065\086\109\077\078\061\061";"\074\090\088\105\079\081\121\061","\103\077\081\085\115\121\104\054\067\085\087\061","\066\081\086\103\080\099\047\119","\078\122\118\051\114\099\061\061","\087\086\117\043\112\076\120\113\117\086\073\068\100\070\115\115\104\098\087\061","\089\070\080\047\117\106\106\117\109\087\100\088\048\072\043\116\115\115\103\100";"\068\050\090\104\055\090\053\083\080\102\111\099\085\120\115\115\112\121\061\061","\043\052\068\098\121\081\101\079\098\108\055\118\069\071\066\073\112\086\074\077\086\043\061\061","\080\078\061\061","\048\083\056\076\117\068\101\071";"\050\121\113\066\081\043\061\061";"\083\069\054\050\052\043\061\061";"\116\043\073\047\087\102\078\061","\100\067\109\056","\121\089\055\112\043\053\115\048","\117\067\049\056\117\088\065\084\115\090\073\061","\078\075\073\043","\119\071\089\051";"\111\089\119\049\083\075\120\110";"\048\114\110\056\052\106\055\054\088\081\088\055","\078\089\089\074\114\069\122\073\054\067\083\111\116\083\083\099\101\113\072\115\089\073\075\048\073\056\054\106\115\078\061\061";"\076\066\108\071";"\115\090\047\112\097\119\077\078","\104\056\082\098\107\109\076\088\118\120\070\077\106\076\111\108","\068\076\101\113\066\069\086\109\113\047\049\066\111\049\081\120\070\121\061\061","\043\071\098\114\117\074\104\074","\110\099\061\061","\056\122\104\113\097\072\079\074\056\043\043\061";"\086\121\061\061","\107\078\122\052\114\100\118\122\116\087\109\078\049\047\065\104\056\087\052\043\119\099\061\061","\090\077\072\110","\076\074\069\076","\084\078\061\061";"\047\081\068\073\047\065\072\111";"\090\049\099\102\082\112\088\052\068\109\070\061","\108\043\056\056";"\065\106\054\047";"\072\065\105\051\109\121\061\061","\069\071\118\118\111\077\048\061";"\083\069\104\071\049\105\106\061","\120\052\050\056\115\066\115\082\106\079\055\070\043\097\089\082\100\067\120\090\103\067\050\098\103\066\050\068\043\043\061\061","\048\088\050\122\052\070\074\089\098\117\081\061";"\118\097\102\100\052\068\069\048\051\067\098\115\118\099\061\061","\087\086\077\090\120\065\078\097\055\050\117\103\080\057\101\055\117\079\104\061","\103\067\052\103\097\085\065\110\056\110\065\076\043\047\052\086\097\111\117\112\117\089\050\098\097\082\097\047\112\043\061\061";"\115\097\122\105\115\043\061\061";"\120\052\080\067\119\113\109\054\073\043\061\061","\072\088\113\090\043\043\119\111\102\121\114\068\114\073\055\070\120\069\117\082";"\113\053\069\108\108\043\061\061","\077\054\105\077","\077\084\066\067\073\078\061\061","\108\070\088\103","\076\072\104\111\057\084\079\081";"\109\047\105\101\074\099\061\061";"\120\085\104\070\088\050\089\116\088\052\115\085\087\079\120\084\055\090\113\061";"\103\090\077\085\074\090\109\122\087\085\089\097\088\079\089\110","\102\109\081\119\049\074\072\089\101\103\070\107\053\100\047\121\054\078\061\061","\043\069\052\100\080\078\061\061";"\100\053\101\085\076\107\121\061","\117\085\101\055\115\114\113\121\103\087\115\102\112\052\082\111","\077\065\055\101\090\078\061\061","\067\075\090\081\081\043\061\061";"\090\103\055\113\047\043\061\061","\077\097\073\101\055\077\050\076";"\107\068\117\078\114\056\069\065","\076\097\083\047\098\104\051\088\050\113\047\098\090\112\121\099\087\068\089\069\075\121\061\061";"\106\097\109\070\100\088\109\070\080\090\120\089\080\052\108\050","\068\048\080\078\043\098\053\052","\086\083\111\053\106\051\075\066\115\121\061\061";"\072\115\114\073\098\118\078\100\111\086\101\108\077\066\068\116\072\112\097\102","\079\068\088\070\056\049\089\085\078\114\047\049\114\072\087\084\110\121\061\061";"\107\072\053\103\043\099\083\115\070\078\061\061";"\081\053\107\079\106\084\090\072\122\053\055\085\106\107\105\074\072\051\057\048\073\121\061\061","\111\118\097\081\087\083\115\056\090\043\061\061","\071\104\087\116\056\120\116\084","\048\078\113\075\116\109\081\109\108\121\061\061";"\120\085\048\122";"\053\098\068\081";"\071\122\105\066";"\119\116\079\076","\081\056\090\117\118\050\054\117\074\065\079\077\116\102\087\097\121\121\061\061";"\082\070\122\074\055\080\
+pcall(function() game:GetService("CoreGui"):FindFirstChild("AimbotUniversal"):Destroy() end)
+
+local P=game:GetService("Players").LocalPlayer
+local TS=game:GetService("TweenService")
+local UIS=game:GetService("UserInputService")
+local RS=game:GetService("RunService")
+local Cam=workspace.CurrentCamera
+
+local AB={on=false,team=true,wall=true,killcheck=true,fov=80,smooth=0.3,part="Head",conn=nil}
+local ESP={on=false,team=true,conn=nil,d={}}
+
+-- FOV Circle drawing
+local fovCircle=Drawing.new("Circle")
+fovCircle.Visible=false
+fovCircle.Color=Color3.fromRGB(255,255,255)
+fovCircle.Thickness=1.5
+fovCircle.NumSides=64
+fovCircle.Filled=false
+
+local function updateFovCircle()
+    local cx,cy=Cam.ViewportSize.X/2,Cam.ViewportSize.Y/2
+    fovCircle.Position=Vector2.new(cx,cy)
+    fovCircle.Radius=AB.fov
+    fovCircle.Visible=AB.on
+end
+
+local function enemy(p)
+    if p==P or not p.Character then return false end
+    local h=p.Character:FindFirstChildWhichIsA("Humanoid")
+    if not h or h.Health<=0 then return false end
+    if AB.team and P.Team~=nil and p.Team==P.Team then return false end
+    return true
+end
+
+local function hasLOS(pt)
+    local ray=workspace:Raycast(Cam.CFrame.Position,(pt.Position-Cam.CFrame.Position).Unit*600,RaycastParams.new())
+    if not ray then return false end
+    return ray.Instance and ray.Instance:IsDescendantOf(pt.Parent)
+end
+
+local function startAB()
+    if AB.conn then AB.conn:Disconnect() end
+    AB.conn=RS.RenderStepped:Connect(function()
+        if not AB.on then fovCircle.Visible=false;return end
+        updateFovCircle()
+        local best,bd=nil,AB.fov
+        local cx,cy=Cam.ViewportSize.X/2,Cam.ViewportSize.Y/2
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if enemy(p) then
+                local pt=p.Character:FindFirstChild(AB.part) or p.Character:FindFirstChild("HumanoidRootPart")
+                if pt then
+                    local s,v=Cam:WorldToViewportPoint(pt.Position)
+                    if v and s.Z>0 and (not AB.wall or hasLOS(pt)) then
+                        local d=math.sqrt((s.X-cx)^2+(s.Y-cy)^2)
+                        if d<bd then bd=d;best=p end
+                    end
+                end
+            end
+        end
+        if best and best.Character then
+            -- Kill check: stop if target is dead
+            local hum=best.Character:FindFirstChildWhichIsA("Humanoid")
+            if AB.killcheck and (not hum or hum.Health<=0) then
+                fovCircle.Color=Color3.fromRGB(255,255,255)
+                return
+            end
+            local pt=best.Character:FindFirstChild(AB.part) or best.Character:FindFirstChild("HumanoidRootPart")
+            if pt then
+                fovCircle.Color=Color3.fromRGB(255,80,80) -- merah saat lock target
+                Cam.CFrame=Cam.CFrame:Lerp(CFrame.new(Cam.CFrame.Position,pt.Position),AB.smooth)
+            end
+        else
+            fovCircle.Color=Color3.fromRGB(255,255,255) -- putih saat tidak ada target
+        end
+    end)
+end
+
+local function clearESP()
+    for _,t in pairs(ESP.d) do for _,v in pairs(t) do pcall(function()v:Remove()end) end end
+    ESP.d={}
+end
+
+local function buildESP()
+    clearESP();if not ESP.on then return end
+    for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+        if p~=P and p.Character then
+            local isT=P.Team~=nil and p.Team==P.Team
+            local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+            local t={}
+            local n=Drawing.new("Text");n.Size=13;n.Color=col;n.Outline=true;n.Center=true;n.Visible=false;table.insert(t,n)
+            local hp=Drawing.new("Text");hp.Size=11;hp.Color=Color3.fromRGB(100,255,100);hp.Outline=true;hp.Center=true;hp.Visible=false;table.insert(t,hp)
+            for i=1,4 do local l=Drawing.new("Line");l.Color=col;l.Thickness=1.5;l.Visible=false;table.insert(t,l) end
+            ESP.d[p.Name]=t
+        end
+    end
+end
+
+local function runESP()
+    if ESP.conn then ESP.conn:Disconnect() end
+    ESP.conn=RS.RenderStepped:Connect(function()
+        if not ESP.on then clearESP();return end
+        -- Auto add new players
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if p~=P and p.Character and not ESP.d[p.Name] then
+                local isT=P.Team~=nil and p.Team==P.Team
+                local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+                local t={}
+                local n=Drawing.new("Text");n.Size=13;n.Color=col;n.Outline=true;n.Center=true;n.Visible=false;table.insert(t,n)
+                local hp=Drawing.new("Text");hp.Size=11;hp.Color=Color3.fromRGB(100,255,100);hp.Outline=true;hp.Center=true;hp.Visible=false;table.insert(t,hp)
+                for i=1,4 do local l=Drawing.new("Line");l.Color=col;l.Thickness=1.5;l.Visible=false;table.insert(t,l) end
+                ESP.d[p.Name]=t
+            end
+        end
+        for _,p in pairs(game:GetService("Players"):GetPlayers()) do
+            if p~=P and p.Character then
+                local hrp=p.Character:FindFirstChild("HumanoidRootPart")
+                local hum=p.Character:FindFirstChildWhichIsA("Humanoid")
+                local head=p.Character:FindFirstChild("Head")
+                local t=ESP.d[p.Name]
+                if not(hrp and hum and head and t) then continue end
+                local hs,hv=Cam:WorldToViewportPoint(head.Position+Vector3.new(0,0.6,0))
+                local fs=Cam:WorldToViewportPoint(hrp.Position-Vector3.new(0,3,0))
+                if not hv then for _,d in pairs(t) do pcall(function()d.Visible=false end) end;continue end
+                local isT=P.Team~=nil and p.Team==P.Team
+                local col=isT and Color3.fromRGB(80,220,80) or Color3.fromRGB(255,60,60)
+                local bh=math.abs(hs.Y-fs.Y);local bw=bh*0.55;local bx=hs.X-bw/2;local by=hs.Y
+                t[1].Position=Vector2.new(hs.X,by-16);t[1].Text=p.Name;t[1].Color=col;t[1].Visible=true
+                t[2].Position=Vector2.new(hs.X,by-4);t[2].Text="HP:"..math.floor(hum.Health);t[2].Visible=true
+                local ln={{Vector2.new(bx,by),Vector2.new(bx+bw,by)},{Vector2.new(bx,by+bh),Vector2.new(bx+bw,by+bh)},{Vector2.new(bx,by),Vector2.new(bx,by+bh)},{Vector2.new(bx+bw,by),Vector2.new(bx+bw,by+bh)}}
+                for i,v in ipairs(ln) do t[i+2].From=v[1];t[i+2].To=v[2];t[i+2].Color=col;t[i+2].Visible=true end
+            end
+        end
+    end)
+end
+
+-- GUI BUILD
+local SG=Instance.new("ScreenGui");SG.Name="AimbotUniversal";SG.ResetOnSpawn=false;SG.DisplayOrder=999
+pcall(function()SG.Parent=game:GetService("CoreGui")end)
+if SG.Parent~=game:GetService("CoreGui") then SG.Parent=P.PlayerGui end
+
+local W=Color3.fromRGB(230,230,240);local BG=Color3.fromRGB(18,18,28);local S2=Color3.fromRGB(25,25,38)
+local TB=Color3.fromRGB(30,30,45);local AC=Color3.fromRGB(100,180,255);local ST=Color3.fromRGB(140,140,160)
+local F=Enum.Font.GothamBold
+
+local function cr(cls,props) local o=Instance.new(cls);for k,v in pairs(props) do o[k]=v end;return o end
+local function corner(p,r) cr("UICorner",{CornerRadius=UDim.new(0,r or 8),Parent=p}) end
+
+local Main=cr("Frame",{Size=UDim2.new(0,480,0,350),Position=UDim2.new(0.5,-240,0.5,-175),BackgroundColor3=BG,BorderSizePixel=0,ClipsDescendants=false,Parent=SG});corner(Main,10)
+local Top=cr("Frame",{Size=UDim2.new(1,0,0,42),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=2,Parent=Main});corner(Top,10)
+cr("Frame",{Size=UDim2.new(1,0,0,10),Position=UDim2.new(0,0,1,-10),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=2,Parent=Top})
+local ac=cr("Frame",{Size=UDim2.new(0,3,0,20),Position=UDim2.new(0,12,0.5,-10),BackgroundColor3=AC,BorderSizePixel=0,ZIndex=3,Parent=Top});corner(ac,99)
+cr("TextLabel",{Size=UDim2.new(0,200,1,0),Position=UDim2.new(0,22,0,0),BackgroundTransparency=1,Text="Aimbot Universal",TextColor3=W,TextSize=14,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=3,Parent=Top})
+
+local function topBtn(x,bg,lbl)
+    local b=cr("TextButton",{Size=UDim2.new(0,25,0,25),Position=UDim2.new(1,x,0.5,-12),BackgroundColor3=bg,Text=lbl,TextColor3=Color3.fromRGB(255,255,255),TextSize=11,Font=F,BorderSizePixel=0,ZIndex=4,Parent=Top});corner(b,6);return b
+end
+topBtn(-32,Color3.fromRGB(255,70,70),"X").MouseButton1Click:Connect(function()
+    if AB.conn then AB.conn:Disconnect() end;if ESP.conn then ESP.conn:Disconnect() end
+    clearESP();fovCircle:Remove();SG:Destroy()
+end)
+local mini=false
+local MinBtnRef=topBtn(-62,Color3.fromRGB(255,180,40),"-")
+
+local drag,dp,fp=false,nil,nil
+Top.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then drag=true;dp=i.Position;fp=Main.Position end end)
+Top.InputEnded:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then drag=false end end)
+UIS.InputChanged:Connect(function(i) if drag and(i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then local d=i.Position-dp;Main.Position=UDim2.new(fp.X.Scale,fp.X.Offset+d.X,fp.Y.Scale,fp.Y.Offset+d.Y) end end)
+
+local Side=cr("Frame",{Size=UDim2.new(0,108,1,-50),Position=UDim2.new(0,6,0,46),BackgroundColor3=TB,BorderSizePixel=0,ZIndex=2,Parent=Main});corner(Side,9)
+cr("UIListLayout",{Padding=UDim.new(0,4),SortOrder=Enum.SortOrder.LayoutOrder,Parent=Side})
+cr("UIPadding",{PaddingTop=UDim.new(0,7),PaddingLeft=UDim.new(0,6),PaddingRight=UDim.new(0,6),Parent=Side})
+local CH=cr("Frame",{Size=UDim2.new(1,-122,1,-50),Position=UDim2.new(0,120,0,46),BackgroundTransparency=1,ClipsDescendants=false,ZIndex=2,Parent=Main})
+
+-- Hook minimize AFTER Side and CH exist
+MinBtnRef.MouseButton1Click:Connect(function()
+    mini=not mini
+    Side.Visible=not mini
+    CH.Visible=not mini
+    TS:Create(Main,TweenInfo.new(0.2),{Size=mini and UDim2.new(0,480,0,42) or UDim2.new(0,480,0,350)}):Play()
+end)
+
+local curB,curS=nil,nil
+local function mkTab(name)
+    local B=cr("TextButton",{Size=UDim2.new(1,0,0,30),BackgroundColor3=TB,Text="",BorderSizePixel=0,ZIndex=3,Parent=Side});corner(B,7)
+    local BL=cr("TextLabel",{Size=UDim2.new(1,-8,1,0),Position=UDim2.new(0,8,0,0),BackgroundTransparency=1,Text=name,TextColor3=ST,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=B})
+    local bar=cr("Frame",{Size=UDim2.new(0,3,0,14),Position=UDim2.new(0,1,0.5,-7),BackgroundColor3=AC,BackgroundTransparency=1,BorderSizePixel=0,ZIndex=5,Parent=B});corner(bar,99)
+    local SC=cr("ScrollingFrame",{Size=UDim2.new(1,-4,1,-4),Position=UDim2.new(0,2,0,2),BackgroundTransparency=1,ScrollBarThickness=3,ScrollBarImageColor3=AC,CanvasSize=UDim2.new(0,0,0,0),AutomaticCanvasSize=Enum.AutomaticSize.Y,Visible=false,ZIndex=3,Parent=CH})
+    cr("UIListLayout",{Padding=UDim.new(0,6),SortOrder=Enum.SortOrder.LayoutOrder,Parent=SC});cr("UIPadding",{PaddingTop=UDim.new(0,4),PaddingRight=UDim.new(0,4),Parent=SC})
+    local function act()
+        if curB then TS:Create(curB,TweenInfo.new(0.12),{BackgroundColor3=TB}):Play()
+            for _,v in pairs(curB:GetChildren()) do if v:IsA("TextLabel") then v.TextColor3=ST end;if v:IsA("Frame") then v.BackgroundTransparency=1 end end end
+        if curS then curS.Visible=false end
+        TS:Create(B,TweenInfo.new(0.12),{BackgroundColor3=Color3.fromRGB(36,36,56)}):Play();BL.TextColor3=W;bar.BackgroundTransparency=0;SC.Visible=true;curB=B;curS=SC
+    end
+    B.MouseButton1Click:Connect(act);return{Frame=SC,Activate=act}
+end
+
+local function sec(p,t) cr("TextLabel",{Size=UDim2.new(1,0,0,16),BackgroundTransparency=1,Text="  "..string.upper(t),TextColor3=ST,TextSize=10,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=3,Parent=p}) end
+
+local function btn(p,t,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundTransparency=1,ZIndex=3,Parent=p})
+    local B=cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundColor3=AC,Text=t,TextColor3=Color3.fromRGB(10,10,20),TextSize=12,Font=F,BorderSizePixel=0,ZIndex=4,Parent=W2});corner(B,7)
+    B.MouseButton1Click:Connect(function() if cb then pcall(cb) end end)
+end
+
+local function tog(p,t,def,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=3,Parent=p});corner(W2,7)
+    cr("TextLabel",{Size=UDim2.new(1,-52,1,0),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=t,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=W2})
+    local Tr=cr("Frame",{Size=UDim2.new(0,34,0,17),Position=UDim2.new(1,-42,0.5,-8),BackgroundColor3=Color3.fromRGB(50,50,70),BorderSizePixel=0,ZIndex=4,Parent=W2});corner(Tr,99)
+    local Kn=cr("Frame",{Size=UDim2.new(0,11,0,11),Position=UDim2.new(0,3,0.5,-5),BackgroundColor3=Color3.fromRGB(170,170,190),BorderSizePixel=0,ZIndex=5,Parent=Tr});corner(Kn,99)
+    local on=def or false
+    local function set(s) on=s
+        if s then TS:Create(Tr,TweenInfo.new(0.15),{BackgroundColor3=AC}):Play();TS:Create(Kn,TweenInfo.new(0.15),{Position=UDim2.new(0,20,0.5,-5),BackgroundColor3=Color3.fromRGB(255,255,255)}):Play()
+        else TS:Create(Tr,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(50,50,70)}):Play();TS:Create(Kn,TweenInfo.new(0.15),{Position=UDim2.new(0,3,0.5,-5),BackgroundColor3=Color3.fromRGB(170,170,190)}):Play() end
+        if cb then pcall(cb,s) end end;set(on)
+    cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundTransparency=1,Text="",ZIndex=6,Parent=W2}).MouseButton1Click:Connect(function()set(not on)end)
+end
+
+local function sldr(p,t,mn,mx,df,cb)
+    local W2=cr("Frame",{Size=UDim2.new(1,0,0,44),BackgroundColor3=S2,BorderSizePixel=0,ZIndex=3,Parent=p});corner(W2,7)
+    cr("TextLabel",{Size=UDim2.new(0.6,0,0,22),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=t,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=4,Parent=W2})
+    local VL=cr("TextLabel",{Size=UDim2.new(0.4,-10,0,22),Position=UDim2.new(0.6,0,0,0),BackgroundTransparency=1,Text=tostring(df),TextColor3=AC,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Right,ZIndex=4,Parent=W2})
+    local Tr=cr("Frame",{Size=UDim2.new(1,-20,0,5),Position=UDim2.new(0,10,0,30),BackgroundColor3=Color3.fromRGB(45,45,65),BorderSizePixel=0,ZIndex=4,Parent=W2});corner(Tr,99)
+    local Fl=cr("Frame",{Size=UDim2.new((df-mn)/(mx-mn),0,1,0),BackgroundColor3=AC,BorderSizePixel=0,ZIndex=5,Parent=Tr});corner(Fl,99)
+    local Th=cr("Frame",{Size=UDim2.new(0,13,0,13),AnchorPoint=Vector2.new(0.5,0.5),Position=UDim2.new((df-mn)/(mx-mn),0,0.5,0),BackgroundColor3=Color3.fromRGB(255,255,255),BorderSizePixel=0,ZIndex=6,Parent=Tr});corner(Th,99)
+    local sl=false
+    local function upd(x) local r=math.clamp((x-Tr.AbsolutePosition.X)/Tr.AbsoluteSize.X,0,1);local v=math.floor(mn+(mx-mn)*r);VL.Text=tostring(v);Fl.Size=UDim2.new(r,0,1,0);Th.Position=UDim2.new(r,0,0.5,0);if cb then pcall(cb,v) end end
+    local SB=cr("TextButton",{Size=UDim2.new(1,0,0,20),Position=UDim2.new(0,0,0,24),BackgroundTransparency=1,Text="",ZIndex=7,Parent=W2})
+    SB.InputBegan:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then sl=true;upd(i.Position.X) end end)
+    SB.InputEnded:Connect(function(i) if i.UserInputType==Enum.UserInputType.MouseButton1 or i.UserInputType==Enum.UserInputType.Touch then sl=false end end)
+    UIS.InputChanged:Connect(function(i) if sl and(i.UserInputType==Enum.UserInputType.MouseMovement or i.UserInputType==Enum.UserInputType.Touch) then upd(i.Position.X) end end)
+end
+
+local function drop(p,tl,opts,cb)
+    local C=cr("Frame",{Size=UDim2.new(1,0,0,30),BackgroundColor3=S2,BorderSizePixel=0,ClipsDescendants=false,ZIndex=10,Parent=p});corner(C,7)
+    cr("TextLabel",{Size=UDim2.new(0.55,0,1,0),Position=UDim2.new(0,10,0,0),BackgroundTransparency=1,Text=tl,TextColor3=W,TextSize=12,Font=F,TextXAlignment=Enum.TextXAlignment.Left,ZIndex=11,Parent=C})
+    local SL=cr("TextLabel",{Size=UDim2.new(0.35,-18,1,0),Position=UDim2.new(0.55,0,0,0),BackgroundTransparency=1,Text=opts[1] or "",TextColor3=AC,TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Right,ZIndex=11,Parent=C})
+    local AL=cr("TextLabel",{Size=UDim2.new(0,18,1,0),Position=UDim2.new(1,-20,0,0),BackgroundTransparency=1,Text="v",TextColor3=ST,TextSize=11,Font=F,ZIndex=11,Parent=C})
+    local L=cr("Frame",{Size=UDim2.new(1,0,0,0),Position=UDim2.new(0,0,1,3),BackgroundColor3=Color3.fromRGB(20,20,33),BorderSizePixel=0,ClipsDescendants=true,Visible=false,ZIndex=50,Parent=C});corner(L,7)
+    cr("UIListLayout",{SortOrder=Enum.SortOrder.LayoutOrder,Parent=L})
+    local IH,op=26,false
+    for _,o in ipairs(opts) do
+        cr("TextButton",{Size=UDim2.new(1,0,0,IH),BackgroundColor3=Color3.fromRGB(20,20,33),Text="  "..o,TextColor3=W,TextSize=11,Font=Enum.Font.Gotham,TextXAlignment=Enum.TextXAlignment.Left,BorderSizePixel=0,ZIndex=51,Parent=L}).MouseButton1Click:Connect(function()
+            SL.Text=o;op=false;AL.Text="v";TS:Create(L,TweenInfo.new(0.15),{Size=UDim2.new(1,0,0,0)}):Play();task.delay(0.16,function()L.Visible=false end);if cb then pcall(cb,o) end
+        end)
+    end
+    local th=#opts*IH
+    cr("TextButton",{Size=UDim2.new(1,0,1,0),BackgroundTransparency=1,Text="",ZIndex=12,Parent=C}).MouseButton1Click:Connect(function()
+        op=not op;if op then L.Visible=true;AL.Text="^";TS:Create(L,TweenInfo.new(0.18),{Size=UDim2.new(1,0,0,th)}):Play()
+        else AL.Text="v";TS:Create(L,TweenInfo.new(0.15),{Size=UDim2.new(1,0,0,0)}):Play();task.delay(0.16,function()L.Visible=false end) end
+    end)
+end
+
+local T1=mkTab("Main");T1.Activate()
+sec(T1.Frame,"Actions")
+btn(T1.Frame,"Reset",function() local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.Health=0 end end)
+btn(T1.Frame,"Rejoin",function() game:GetService("TeleportService"):Teleport(game.PlaceId,P) end)
+btn(T1.Frame,"Anti-AFK",function() local VU=game:GetService("VirtualUser");P.Idled:Connect(function() VU:Button2Down(Vector2.new(0,0),Cam.CFrame);task.wait(1);VU:Button2Up(Vector2.new(0,0),Cam.CFrame) end) end)
+sec(T1.Frame,"Aimbot")
+tog(T1.Frame,"Aimbot",false,function(s)
+    AB.on=s
+    if s then startAB();updateFovCircle()
+    else AB.on=false;if AB.conn then AB.conn:Disconnect();AB.conn=nil end;fovCircle.Visible=false end
+end)
+tog(T1.Frame,"Team Check",true,function(s) AB.team=s end)
+tog(T1.Frame,"Wall Check",true,function(s) AB.wall=s end)
+tog(T1.Frame,"Kill Check",true,function(s) AB.killcheck=s end)
+sldr(T1.Frame,"Aimbot FOV",50,600,80,function(v) AB.fov=v;fovCircle.Radius=v end)
+sldr(T1.Frame,"Smoothing 1-10",1,10,3,function(v) AB.smooth=v/10 end)
+drop(T1.Frame,"Aim Part",{"Head","HumanoidRootPart"},function(v) AB.part=v end)
+
+local T2=mkTab("Player")
+sec(T2.Frame,"Movement")
+sldr(T2.Frame,"Walk Speed",16,250,16,function(v) local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.WalkSpeed=v end end)
+sldr(T2.Frame,"Jump Power",50,350,50,function(v) local h=P.Character and P.Character:FindFirstChildWhichIsA("Humanoid");if h then h.JumpPower=v end end)
+drop(T2.Frame,"FOV",{"70","90","110","130"},function(v) Cam.FieldOfView=tonumber(v) or 70 end)
+
+local T3=mkTab("Visual")
+sec(T3.Frame,"ESP")
+tog(T3.Frame,"ESP",false,function(s)
+    ESP.on=s
+    if s then
+        buildESP();runESP()
+    else
+        ESP.on=false
+        if ESP.conn then ESP.conn:Disconnect();ESP.conn=nil end
+        clearESP()
+    end
+end)
+tog(T3.Frame,"ESP Team Check",true,function(s) ESP.team=s;if ESP.on then buildESP() end end)
+sec(T3.Frame,"Lighting")
+btn(T3.Frame,"Fullbright",function() local L=game:GetService("Lighting");L.Brightness=10;L.ClockTime=14;L.FogEnd=1e9;L.GlobalShadows=false end)
+btn(T3.Frame,"Reset Lighting",function() local L=game:GetService("Lighting");L.Brightness=1;L.ClockTime=14;L.FogEnd=100000;L.GlobalShadows=true end)
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Aimbot Universal loaded!";
+    Text = "Go subcribe to VikiScripts!";
+    Duration = 5;
+})
+
+print("[CoolGUI] Lo
